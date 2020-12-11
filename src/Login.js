@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import axios from "axios";
 import "./Login.css";
 import Header from "./Header";
+import { Redirect } from 'react-router-dom';
+
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -26,21 +28,31 @@ class Login extends Component {
       username: this.state.username,
       password: this.state.password,
     };
-    fetch(
-      "https://u8fpqfk2d4.execute-api.ap-southeast-1.amazonaws.com/techtrek2020/login",
-      {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: {
-          "x-api-key": "AvznKwHoRPaClLwHbinGV8RezzoVYl5f7aogWGl3",
-          "Content-Type": "application/json",
-          Accept: "application/json",
-          Origin: "http://localhost:3000",
-        },
-      }
-    ).then((res) => {
-      console.log(res);
-    });
+
+    console.log(data);
+    axios
+      .post(
+        "https://u8fpqfk2d4.execute-api.ap-southeast-1.amazonaws.com/techtrek2020/login",
+        {
+          method: "POST",
+          body: JSON.stringify(data),
+          headers: {
+            "x-api-key": "AvznKwHoRPaClLwHbinGV8RezzoVYl5f7aogWGl3",
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Headers":
+              "Origin, X-Requested-With, Content-Type, Accept",
+            "Origin": "http://localhost:3000",
+          },
+        }
+      )
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((e) => {
+        this.props.history.push('/dashboard');
+      });
     /*axios.post("/login", data)
     .then((res) => {
       console.log(res);
@@ -55,7 +67,7 @@ class Login extends Component {
       <div className="login">
         <div className="form-wrapper">
           <form>
-              <h1> DBS E-WALLET</h1>
+            <h1> DBS E-WALLET</h1>
             <div className="form-group">
               <label>Username</label>
               <input
