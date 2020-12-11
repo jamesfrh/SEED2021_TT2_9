@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import "./Login.css";
+import Header from "./Header";
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -54,6 +55,7 @@ class Login extends Component {
       <div className="login">
         <div className="form-wrapper">
           <form>
+              <h1> DBS E-WALLET</h1>
             <div className="form-group">
               <label>Username</label>
               <input

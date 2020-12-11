@@ -14,7 +14,7 @@ axios.defaults.headers.common["Access-Control-Allow-Methods"] = "GET,HEAD,OPTION
 axios.defaults.headers.common["Access-Control-Allow-Headers"] = "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers";
 ReactDOM.render(
   <React.StrictMode>
-    <Login />
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );
