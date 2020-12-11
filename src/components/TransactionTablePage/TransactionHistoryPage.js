@@ -4,20 +4,26 @@ import TransactionTableFilter from "./TransactionTableFilter";
 import TransactionHistoryHeader from "./TransactionHistoryHeader";
 import { EditingMode, SortingMode } from "ka-table/enums";
 
-const TransactionHistoryPage = () => {
-  const [table, setTable] = useState([]);
+function TransactionHistoryPage (){
+  const [table, setTable] = useState({});
   const [name, setName] = useState("");
 
   useEffect(() => {
+    console.log("useeffct")
+
     // Call API to fetch user's name
     fetchUserName();
     // Call API to fetch user's transactions
     fetchUserTransaction();
-  }, []);
+  },[]);
 
   const fetchUserName = () => {
-    let data = "Team 09";
+    let data = "Team 19";
+
+    console.log("beofre", name);
     setName(data);
+    console.log("after", name);
+
   };
 
   const fetchUserTransaction = () => {
@@ -34,6 +40,7 @@ const TransactionHistoryPage = () => {
         id: index,
       }));
 
+    console.log("data", dataArray);
 
     let tablePropsInit = {
       columns: [
@@ -51,14 +58,22 @@ const TransactionHistoryPage = () => {
       sortingMode: SortingMode.Single,
     };
 
+    console.log("data", tablePropsInit);
+
     setTable(tablePropsInit);
+    console.log("tanle", table)
   };
+
+  console.log("table -> ", table)
+  console.log("name -> ", name)
+
+
 
   return (
     <div>
       <TransactionHistoryHeader name={name} />
       <TransactionTableFilter />
-      <TransactionTable table={table} />
+      <TransactionTable/>
     </div>
   );
 };
