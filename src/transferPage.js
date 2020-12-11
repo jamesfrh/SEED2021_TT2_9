@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import transferForm from './Components/transferForm';
+import transferForm from './transferForm';
 
 
 class Form extends Component {
