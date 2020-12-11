@@ -45,7 +45,7 @@ class transferForm extends Component {
   }
 
   handleSubmit = (event) => {
-    alert(`${this.state.username} ${this.state.comments} ${this.state.topic}`);
+    alert("Success");
     event.preventDefault();
     let data = {
       custID: this.props.cusID,
