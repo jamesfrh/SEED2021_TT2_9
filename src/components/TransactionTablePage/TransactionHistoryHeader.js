@@ -1,10 +1,8 @@
 import React from 'react';
 
-let user = "myName";
-
-const TransactionHistoryHeader = () => {
+const TransactionHistoryHeader = ({name}) => {
   return (
-    <div>Welcome ${user} to your transaction history</div>
+    <div>Welcome {name} to your transaction history</div>
   );
 };
 
