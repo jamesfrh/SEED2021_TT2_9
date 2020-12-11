@@ -1,53 +1,88 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
+import Axios from 'axios';
 
 class transferForm extends Component {
   constructor(props) {
-    super(props);
+    super(props)
   }
 
   state = {
     custID: this.props.cusID,
-    payeeID: "",
+    payeeID: '',
     dateTime: new Date().toLocaleString(),
-    amount: "",
-    expensesCat: "",
-    eGift: "",
-    message: "",
-  };
+    amount: '',
+    expensesCat: '',
+    eGift: '',
+    message: '',
+  }
 
   handlePayeeIDChange = (event) => {
     this.setState({
-      payeeID: event.target.value,
-    });
-  };
+      payeeID: event.target.value
+    })
+  }
   handleAmountChange = (event) => {
     this.setState({
-      amount: event.target.value,
-    });
-  };
+      amount: event.target.value
+    })
+  }
 
   handleExpCatChange = (event) => {
     this.setState({
-      expensesCat: event.target.value,
-    });
-  };
+      expensesCat: event.target.value
+    })
+  }
   handleMessageChange = (event) => {
     this.setState({
-      message: event.target.value,
-    });
-  };
+      message: event.target.value
+    })
+  }
 
   handleEgiftChange = (event) => {
     this.setState({
-      eGift: event.target.value,
-    });
-  };
+      eGift: event.target.value
+    })
+  }
 
   handleSubmit = (event) => {
     alert(`${this.state.username} ${this.state.comments} ${this.state.topic}`);
     event.preventDefault();
-    console.log(event);
-  };
+    let data = {
+      custID: this.props.cusID,
+      payeeID: this.state.payeeID,
+      dateTime: this.state.dateTime,
+      amount: this.state.amount,
+      expensesCat: this.state.expensesCat,
+      eGift: this.state.eGift,
+      message: this.state.message,
+    };
+    Axios.post("/transaction/add", data)
+      .then((res) => {
+        console.log("Successful transaction");
+      })
+      .catch(err => {
+        console.log()
+      });
+  }
+
+
+
+  submitHandler = (event) => {
+    event.preventDefault();
+    let data = {
+      username: this.state.username,
+      password: this.state.password,
+    };
+    Axios.post("/transaction/add", data)
+      .then((res) => {
+        console.log("Successful transaction");
+      })
+      .catch(err => {
+        console.log(err)
+      });
+  }
+
+
 
   render() {
     return (
@@ -78,22 +113,24 @@ class transferForm extends Component {
         </div>
         <div>
           <label>Expenses Category</label>
-          <textarea
+          <select
             value={this.state.expensesCat}
             onChange={this.handleExpCatChange}
-          />
-          <option value="food">Food</option>
-          <option value="transport">Transport</option>
-          <option value="shopping">Shopping</option>
+          >
+            <option value="food">Food</option>
+            <option value="transport">Transport</option>
+            <option value="shopping">Shopping</option>
+          </select>
         </div>
         <div>
           <label>eGift</label>
-          <textarea
+          <select
             value={this.state.eGift}
             onChange={this.handleEgiftChange}
-          />
-          <option value="false">False</option>
-          <option value="true">True</option>
+          >
+            <option value="false">False</option>
+            <option value="true">True</option>
+          </select>
         </div>
         <div>
           <label>Message</label>
@@ -108,4 +145,5 @@ class transferForm extends Component {
     );
   }
 }
+
 export default transferForm;

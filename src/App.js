@@ -7,6 +7,7 @@ import "ka-table/style.scss";
 import TransferForm from "./transferForm";
 import Dashboard from "./components/dashboard";
 import { useState } from "react";
+import Charts from "./Charts"
 
 function App() {
   const [isLoggedIn, setLogIn] = useState(false);
@@ -21,6 +22,7 @@ function App() {
             <Route path="/trans_history" component={TransactionHistoryPage} />
             <Route path="/trans_form" component={TransferForm} />
             <Route path="/dashboard" component={Dashboard} />
+            <Route path="/charts" component={Charts} />
           </Switch>
         </div>
       </div>
