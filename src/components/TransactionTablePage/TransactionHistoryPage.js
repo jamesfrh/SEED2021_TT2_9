@@ -13,7 +13,7 @@ function TransactionHistoryPage (){
   },[]);
 
   const fetchUserName = () => {
-    let data = "Team 19";
+    let data = "Trey Swaniawski";
     setName(data);
   };
 
