@@ -6,8 +6,11 @@ import TransactionHistoryPage from "./components/TransactionTablePage/Transactio
 import "ka-table/style.scss";
 import TransferForm from "./transferForm";
 import Dashboard from "./components/dashboard";
+import { useState } from "react";
 
 function App() {
+  const [isLoggedIn, setLogIn] = useState(false);
+
   return (
     <Router>
       <div className="App">
