@@ -1,16 +1,8 @@
-import './App.css';
-import TransactionTable from "./components/TransactionTablePage/TransactionTable";
-import TransactionTableFilter from "./components/TransactionTablePage/TransactionTableFilter";
-import TransactionHistoryHeader from "./components/TransactionTablePage/TransactionHistoryHeader";
+import "./App.css";
+import TransactionHistoryPage from "./components/TransactionTablePage/TransactionHistoryPage";
 
 function App() {
-  return (<div>
-    <TransactionHistoryHeader/>
-    <TransactionTableFilter/>
-    <TransactionTable/>
-  </div>
-
-  );
+  return <TransactionHistoryPage />;
 }
 
 export default App;
